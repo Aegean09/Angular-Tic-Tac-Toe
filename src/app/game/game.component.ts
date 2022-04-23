@@ -50,22 +50,32 @@ export class GameComponent implements OnInit {
             }
           }
         }
-      });
-
-
-
-      await this.game.checkGameEndFull().then( (end: boolean)=>{
-        if(this.game.gameStatus===0 && end){
-          if (inf!=null){
-            inf.innerHTML="No Winner, DRAW!";
-            const start_button1=document.getElementById("start_button");
-            if(start_button1!=null){
-              start_button1.style.display="block";
+         this.game.checkGameEndFull().then( (end: number)=>{
+          if(this.game.gameStatus===0 && end==1){
+            if (inf!=null){
+              inf.innerHTML="No Winner, DRAW!";
+              const start_button1=document.getElementById("start_button");
+              if(start_button1!=null){
+                start_button1.style.display="block";
+              }
             }
           }
-        }
-        
+          if(this.game.gameStatus===0 && end==0){
+            if (inf!=null){
+              inf.innerHTML="The winner is player number"+this.game.currentTurn;
+              const start_button1=document.getElementById("start_button");
+              if(start_button1!=null){
+                start_button1.style.display="block";
+              }
+            }
+          }
+          
+        });
       });
+
+
+
+     
 
 
       this.game.changePlayer();
