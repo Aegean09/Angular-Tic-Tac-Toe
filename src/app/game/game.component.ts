@@ -22,6 +22,10 @@ export class GameComponent implements OnInit {
     if(inf!=null){
       inf.innerHTML=currentPlayer;
     }
+    const start_button1=document.getElementById("start_button");
+    if(start_button1!=null){
+      start_button1.style.display="none";
+    }
   }
 
   async clickSubfield(subfield:any): Promise<void>{
@@ -40,6 +44,10 @@ export class GameComponent implements OnInit {
         if(this.game.gameStatus===0 && end){
           if (inf!=null){
             inf.innerHTML="The winner is player number"+this.game.currentTurn;
+            const start_button1=document.getElementById("start_button");
+            if(start_button1!=null){
+              start_button1.style.display="block";
+            }
           }
         }
       });
@@ -50,8 +58,13 @@ export class GameComponent implements OnInit {
         if(this.game.gameStatus===0 && end){
           if (inf!=null){
             inf.innerHTML="No Winner, DRAW!";
+            const start_button1=document.getElementById("start_button");
+            if(start_button1!=null){
+              start_button1.style.display="block";
+            }
           }
         }
+        
       });
 
 

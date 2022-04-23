@@ -8,11 +8,20 @@
             p{
                 color: rgb(230, 109, 109);
             }
+            background-image: url("X&O/X.png");
+            background-size: 10px 10px;
+            background-position:bottom;
+            background-repeat: no-repeat;
+
         }
         .player-two{
             p{
                 color: rgb(83, 163, 83);
             }
+            background-image: url("X&O/O.png");
+            background-size: 10px 10px;
+            background-position:bottom;
+            background-repeat: no-repeat;
         }
         .gamefield{
             max-width: 300px;

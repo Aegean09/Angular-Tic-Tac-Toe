@@ -5,7 +5,7 @@
     </div>
 
     <div class="field d-flex justify-content-center" style="width: 100%;">
-        <button (click)="startGame()" mat-raised-button color="accent" class="start-game-button">
+        <button (click)="startGame()" mat-raised-button color="accent" class="start-game-button" id="start_button">
             Start Game Now!
         </button>
     </div>
@@ -13,7 +13,7 @@
 
     <div *ngIf="this.game.gameStatus===1" class="gameboard">
         <div class="players player-one align-self-center">
-            <p class="mat-body-1" style="font-weight: 700; margin: 0 0 10px 10px;">Player 1</p>
+            <p class="mat-body-1" style="font-weight: 700; margin: 0 0 10px 10px;">Player</p>
         </div>
 
 
@@ -38,7 +38,7 @@
 
 
         <div class="players player-two align-self-center">
-            <p class="mat-body-1" style="font-weight: 700; margin: 0 0 10px 10px;">Player 2</p>
+            <p class="mat-body-1" style="font-weight: 700; margin: 0 0 10px 10px;">Player</p>
         </div>
     </div>
 </div>
