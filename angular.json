@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-tic-tac-toe": {
+    "Angular-Tic-Tac-Toe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -40,7 +41,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "600kb",
                   "maximumError": "1mb"
                 },
                 {
@@ -72,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-tic-tac-toe:build:production"
+              "browserTarget": "Angular-Tic-Tac-Toe:build:production"
             },
             "development": {
-              "browserTarget": "angular-tic-tac-toe:build:development"
+              "browserTarget": "Angular-Tic-Tac-Toe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-tic-tac-toe:build"
+            "browserTarget": "Angular-Tic-Tac-Toe:build"
           }
         },
         "test": {
@@ -99,6 +100,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -107,5 +109,5 @@
       }
     }
   },
-  "defaultProject": "angular-tic-tac-toe"
+  "defaultProject": "Angular-Tic-Tac-Toe"
 }

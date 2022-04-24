@@ -1,0 +1,95 @@
+.main-container{
+    .gameboard{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .player-one{
+            p{
+                color: rgb(230, 109, 109);
+            }
+            background-image: url("X&O/X.png");
+            background-size: 10px 10px;
+            background-position:bottom;
+            background-repeat: no-repeat;
+
+        }
+        .player-two{
+            p{
+                color: rgb(83, 163, 83);
+            }
+            background-image: url("X&O/O.png");
+            background-size: 10px 10px;
+            background-position:bottom;
+            background-repeat: no-repeat;
+        }
+        .gamefield{
+            max-width: 300px;
+            .subfield{
+                cursor: pointer;
+                height: 100px;
+                width: 100px;
+                border: 1px solid #fff;
+                &.player-one{
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-image: url("X&O/X.png");
+                    background-size: 95px 95px;
+                }
+                &.player-two{
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-image: url("X&O/O.png");
+                    background-size: 95px 95px;
+                    // background: green;
+                }
+            }
+        }
+    }
+}
+@media (max-width:768px) {
+    .main-container{
+
+        .gameboard{
+            margin-top: 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .player-one{
+                p{
+                    color: rgb(230, 109, 109);
+                }
+            }
+            .player-two{
+                p{
+                    color: rgb(83, 163, 83);
+                }
+            }
+            .gamefield{
+                max-width: 300px;
+                padding-left: 10%;
+                .subfield{
+                    cursor: pointer;
+                    height: 80px;
+                    width: 80px;
+                    border: 1px solid #fff;
+                    
+                    &.player-one{
+                        background-position: center;
+                        background-image: url("X&O/X.png");
+                        background-repeat: no-repeat;
+                        background-size: 45px 45px;
+                    }
+                    &.player-two{
+                        background-position: center;
+                        background-image: url("X&O/O.png");
+                        background-repeat: no-repeat;
+                        background-size: 45px 45px;
+                        // background: green;
+                    }
+                }
+            }
+        }
+    }
+    
+}
