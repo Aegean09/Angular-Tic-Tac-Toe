@@ -17,7 +17,14 @@ export class GameComponent implements OnInit {
 
   startGame(): void {
     this.game.gameStart();
-    const currentPlayer = 'Current turn: Player: '+this.game.currentTurn;
+    var currentsymbol;
+    if (this.game.currentTurn==1){
+      currentsymbol="X";
+    }
+    else{
+      currentsymbol="O";
+    }
+    const currentPlayer = 'Current turn: Player: '+currentsymbol;
     const inf=document.querySelector(".current-status");
     if(inf!=null){
       inf.innerHTML=currentPlayer;
@@ -29,6 +36,7 @@ export class GameComponent implements OnInit {
   }
 
   async clickSubfield(subfield:any): Promise<void>{
+    var currentsymbol;
     if(this.game.gameStatus===1){
       const position = subfield.currentTarget.getAttribute('position');
       const inf=document.querySelector(".current-status");
@@ -43,7 +51,13 @@ export class GameComponent implements OnInit {
       await this.game.checkGameEndWinner().then( (end: boolean)=>{
         if(this.game.gameStatus===0 && end){
           if (inf!=null){
-            inf.innerHTML="The winner is player number"+this.game.currentTurn;
+            if (this.game.currentTurn==1){
+              currentsymbol="X";
+            }
+            else{
+              currentsymbol="O";
+            }
+            inf.innerHTML="The winner is player: "+currentsymbol;
             const start_button1=document.getElementById("start_button");
             if(start_button1!=null){
               start_button1.style.display="block";
@@ -62,7 +76,13 @@ export class GameComponent implements OnInit {
           }
           if(this.game.gameStatus===0 && end==0){
             if (inf!=null){
-              inf.innerHTML="The winner is player number"+this.game.currentTurn;
+              if (this.game.currentTurn==1){
+                currentsymbol="X";
+              }
+              else{
+                currentsymbol="O";
+              }
+              inf.innerHTML="The winner is player: "+currentsymbol;
               const start_button1=document.getElementById("start_button");
               if(start_button1!=null){
                 start_button1.style.display="block";
@@ -72,15 +92,15 @@ export class GameComponent implements OnInit {
           
         });
       });
-
-
-
-     
-
-
       this.game.changePlayer();
+      if (this.game.currentTurn==1){
+        currentsymbol="X";
+      }
+      else{
+        currentsymbol="O";
+      }
       if(this.game.gameStatus===1){
-        const currentPlayer = 'Current turn: Player: '+this.game.currentTurn;
+        const currentPlayer = 'Current turn: Player: '+currentsymbol;
         if(inf!=null){
           inf.innerHTML=currentPlayer;
         }
