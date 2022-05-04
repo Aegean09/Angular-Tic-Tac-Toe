@@ -15,7 +15,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   startAI():void{
     this.game.AIStart();
     var currentsymbol;
@@ -223,7 +223,7 @@ export class GameComponent implements OnInit {
 
           if(this.game.gameStatus===2){
             this.game.changePlayer();
-            const currentPlayer = 'It\'s your turn1...'+this.game.gameStatus;
+            const currentPlayer = 'It\'s your turn1...';
             if(inf!=null){
                 inf.innerHTML=currentPlayer;
             }
