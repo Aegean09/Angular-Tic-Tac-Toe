@@ -223,7 +223,7 @@ export class GameComponent implements OnInit {
 
           if(this.game.gameStatus===2){
             this.game.changePlayer();
-            const currentPlayer = 'It\'s your turn1...';
+            const currentPlayer = 'It\'s your turn...';
             if(inf!=null){
                 inf.innerHTML=currentPlayer;
             }
