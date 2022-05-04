@@ -1,3 +1,4 @@
+// import { resolve } from "dns";
 import { Status } from "./game-status";
 
 export class Gamelogic {
@@ -7,7 +8,7 @@ export class Gamelogic {
     currentTurn: number;
 
     gameStatus: Status;
-
+    //#region winners
     winSituationsOne: Array<Array<number>>=[
         [1,1,1,0,0,0,0,0,0],
         [1,1,1,0,0,0,0,0,1],        [1,1,1,0,0,0,0,1,1],        [1,1,1,0,0,0,1,0,1],        [1,1,1,0,0,1,0,0,1],        [1,1,1,0,1,0,0,0,1],        [1,1,1,1,0,0,0,0,1],
@@ -172,7 +173,7 @@ export class Gamelogic {
         [0,0,2,0,2,0,2,0,2],        [2,0,2,0,2,0,2,0,2],        [0,2,2,0,2,0,2,0,2],        [0,0,2,2,2,0,2,0,2],        [0,0,2,0,2,2,2,0,2],        [0,0,2,0,2,0,2,2,2],
 
     ];
-
+    //#endregion
     public constructor(){
         this.gameStatus= Status.STOP;
         this.gameField=[0,0,0,0,0,0,0,0,0];
@@ -181,6 +182,11 @@ export class Gamelogic {
         this.gameField=[0,0,0,0,0,0,0,0,0];
         this.currentTurn= this.randomPlayerStart();
         this.gameStatus= Status.START;
+    }
+    AIStart():void{
+        this.gameField=[0,0,0,0,0,0,0,0,0];
+        this.currentTurn=1;
+        this.gameStatus= Status.AI;
     }
     randomPlayerStart():number{
         const startPlayer = Math.floor(Math.random()*2)+1;
@@ -199,6 +205,12 @@ export class Gamelogic {
         }
         return colorClass;
     }
+
+    changeAI():number{
+        const random_index=Math.floor(Math.random()*9);
+        return random_index;
+    }
+
     changePlayer():void{
         if(this.currentTurn===2){
             this.currentTurn=1;
@@ -207,6 +219,7 @@ export class Gamelogic {
             this.currentTurn=2;
         }
     }
+
     async checkEmpty(position:number): Promise<boolean>{
         let isempty=true;
         if(this.gameField[position]===0){
