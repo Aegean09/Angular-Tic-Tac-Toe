@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { audit } from 'rxjs';
 // import { promisify } from 'util';
 import { Gamelogic } from '../gamelogic';
 
@@ -65,7 +67,7 @@ export class GameComponent implements OnInit {
 
   async clickSubfield(subfield:any): Promise<void>{
     var currentsymbol;
-
+    const easterEgg=document.getElementById("easteregg");
     //#region Against AI
     if(this.game.gameStatus===2){
       const position = subfield.currentTarget.getAttribute('position');
@@ -77,23 +79,31 @@ export class GameComponent implements OnInit {
           inf.innerHTML=currentPlayer;
         }
       }
+      console.log(this.game.currentTurn);
       if(this.game.currentTurn==1){
         if(await this.game.checkEmpty(position)){
           if(await this.game.checkEmpty(position)){
             this.game.setField(position, this.game.currentTurn);
-            const color=this.game.getPlayerColorClass();
-            subfield.currentTarget.classList.add(color);
+            if (easterEgg!=null){
+              if (Number(easterEgg.innerHTML)==2){
+                const color=this.game.getEasterClass();
+                subfield.currentTarget.classList.add(color);
+              }
+              else{
+                const color=this.game.getPlayerColorClass();
+                subfield.currentTarget.classList.add(color);
+              }
+            }
           }
           await this.game.checkGameEndWinner().then( (end: boolean)=>{
             if(this.game.gameStatus===0 && end){
               if (inf!=null){
                 if (this.game.currentTurn==1){
-                  currentsymbol="X";
+                  inf.innerHTML="You won!";
                 }
                 else{
-                  currentsymbol="O";
+                  inf.innerHTML="I have beaten you!";
                 }
-                inf.innerHTML="The winner is player: "+currentsymbol;
                 const start_button1=document.getElementById("start_button");
                 if(start_button1!=null){
                   start_button1.style.display="block";
@@ -121,12 +131,11 @@ export class GameComponent implements OnInit {
               if(this.game.gameStatus===0 && end==0){
                 if (inf!=null){
                   if (this.game.currentTurn==1){
-                    currentsymbol="X";
+                    inf.innerHTML="You won!";
                   }
                   else{
-                    currentsymbol="O";
+                    inf.innerHTML="I have beaten you!";
                   }
-                  inf.innerHTML="The winner is player: "+currentsymbol;
                   const start_button1=document.getElementById("start_button");
                   if(start_button1!=null){
                     start_button1.style.display="block";
@@ -159,19 +168,26 @@ export class GameComponent implements OnInit {
             if(await this.game.checkEmpty(rand_index)){
               if(await this.game.checkEmpty(rand_index)){
                 this.game.setField(rand_index, this.game.currentTurn);
-                const color_ai=this.game.getPlayerColorClass();
-                document.getElementById(rand_index.toString())?.classList.add(color_ai);
+                if (easterEgg!=null){
+                  if (Number(easterEgg.innerHTML)==2){
+                    const color_ai=this.game.getEasterClass();
+                    document.getElementById(rand_index.toString())?.classList.add(color_ai);
+                  }
+                  else{
+                    const color_ai=this.game.getPlayerColorClass();
+                    document.getElementById(rand_index.toString())?.classList.add(color_ai);
+                  }
+                }
               }
               await this.game.checkGameEndWinner().then( (end: boolean)=>{
                 if(this.game.gameStatus===0 && end){
                   if (inf!=null){
                     if (this.game.currentTurn==1){
-                      currentsymbol="X";
+                      inf.innerHTML="You won!";
                     }
                     else{
-                      currentsymbol="O";
+                      inf.innerHTML="I have beaten you!";
                     }
-                    inf.innerHTML="The winner is player: "+currentsymbol;
                     const start_button1=document.getElementById("start_button");
                     if(start_button1!=null){
                       start_button1.style.display="block";
@@ -199,12 +215,11 @@ export class GameComponent implements OnInit {
                   if(this.game.gameStatus===0 && end==0){
                     if (inf!=null){
                       if (this.game.currentTurn==1){
-                        currentsymbol="X";
+                        inf.innerHTML="You won!";
                       }
                       else{
-                        currentsymbol="O";
+                        inf.innerHTML="I have beaten you!";
                       }
-                      inf.innerHTML="The winner is player: "+currentsymbol;
                       const start_button1=document.getElementById("start_button");
                       if(start_button1!=null){
                         start_button1.style.display="block";
@@ -241,8 +256,16 @@ export class GameComponent implements OnInit {
       if(await this.game.checkEmpty(position)){
         if(await this.game.checkEmpty(position)){
           this.game.setField(position, this.game.currentTurn);
-          const color=this.game.getPlayerColorClass();
-          subfield.currentTarget.classList.add(color);
+          if (easterEgg!=null){
+            if (Number(easterEgg.innerHTML)==2){
+              const color=this.game.getEasterClass();
+              subfield.currentTarget.classList.add(color);
+            }
+            else{
+              const color=this.game.getPlayerColorClass();
+              subfield.currentTarget.classList.add(color);
+            }
+          }
         }
         await this.game.checkGameEndWinner().then( (end: boolean)=>{
           if(this.game.gameStatus===0 && end){
@@ -315,5 +338,27 @@ export class GameComponent implements OnInit {
       }
     }
     //#endregion
+  }
+
+  easterEgg():void{
+    var a;
+    const fieldy= document.getElementById("board");
+    const title = document.getElementById("tic-title");
+    const testing = document.getElementById("easteregg");
+    if(testing!=null){
+      a=Number(testing.innerHTML);
+      a=a+1;
+      a=String(a);
+      testing.innerHTML=a;
+      if(a>="32"){
+        // this.game.playTheme();
+        if(title!=null){
+          title.innerHTML="Tic-Tac-SWAMP!";
+        }
+        if(fieldy!=null){
+          fieldy.classList.add("easter-egg");
+        }
+      }
+    }
   }
 }

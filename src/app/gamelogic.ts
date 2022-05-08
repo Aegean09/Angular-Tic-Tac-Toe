@@ -205,6 +205,21 @@ export class Gamelogic {
         }
         return colorClass;
     }
+    getEasterClass():string{
+        let colorClass=""
+        if(this.currentTurn===2){
+            colorClass='easter-egg-two';
+        }
+        else if(this.currentTurn===1){
+            colorClass='easter-egg-one';
+        }
+        return colorClass;
+    }
+    // playTheme():void{
+    //     const theme=new Audio("theme.mp3");
+    //     theme.load();
+    //     theme.play();
+    // }
 
     changeAI():number{
         const random_index=Math.floor(Math.random()*9);

@@ -12,7 +12,9 @@
             background-size: 10px 10px;
             background-position:bottom;
             background-repeat: no-repeat;
-
+            &.easter-egg-one{
+                background-image: url("X&O/fiona.png");
+            }
         }
         .player-two{
             p{
@@ -22,6 +24,9 @@
             background-size: 10px 10px;
             background-position:bottom;
             background-repeat: no-repeat;
+            &.easter-egg-one{
+                background-image: url("X&O/shrek.png");
+            }
         }
         .gamefield{
             max-width: 300px;
@@ -43,6 +48,25 @@
                     background-size: 95px 95px;
                     // background: green;
                 }
+                &.easter-egg-one{
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-image: url("X&O/fiona.png");
+                    background-size: 95px 95px;
+                }
+                &.easter-egg-two{
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-image: url("X&O/shrek.png");
+                    background-size: 95px 95px;
+                }
+            }
+
+            &.easter-egg{
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: url("X&O/swamp.png");
+                background-size: 500px;
             }
         }
     }

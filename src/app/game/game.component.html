@@ -1,5 +1,6 @@
 <div class="main-container">
-    <h1 class="mat-display-2" style="font-weight: 900; text-align: center; color: #fff; margin: 15px 0;">Tic-Tac-Toe</h1>
+    <h1 id="tic-title" (click)="easterEgg();"  class="mat-display-2" style="font-weight: 900; text-align: center; color: #fff; margin: 15px 0;">Tic-Tac-Toe</h1>
+    <div style="display: none;"  id="easteregg">0</div>
     <div class="field  d-flex justify-content-center">
         <p  class="current-status mat-display-1"style="color: #fff;">Start the game on the button</p>
     </div>
@@ -15,7 +16,7 @@
         <div class="players player-one align-self-center">
             <p class="mat-body-1" style="font-weight: 700; margin: 0 0 10px 10px;">Player</p>
         </div>
-        <div class="gamefield container-fluid">
+        <div id="board" class="gamefield container-fluid">
             <div class="row">
                 <div (click)="clickSubfield($event)" id="0" position="0" class="subfield col-4"></div>
                 <div (click)="clickSubfield($event)" id="1" position="1" class="subfield col-4"></div>
